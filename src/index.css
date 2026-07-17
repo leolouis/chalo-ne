@@ -1,0 +1,123 @@
+/**
+ * CHALO NE! METROPOLITAN TRANSIT MESH ENGINE
+ * =========================================================================
+ * Core Production Style Sheet Matrix (Ultra Pro Max / Architecture Layer)
+ * 
+ * Enforces hardware-accelerated viewport rendering, design token variables,
+ * enterprise focus rings, premium scroll behaviors, and responsive mobile-first
+ * layout safety patches for S.G. Highway & GIFT City corporate commuters.
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   1. ROOT DESIGN TOKEN CONTRACTS & GLOBAL VARIABLES
+   ========================================================================= */
+:root {
+  /* Premium Dark Mode System Neutrals */
+  --bg-slate-900: #0f172a;
+  --bg-slate-950: #020617;
+  
+  /* Brand Accent Tokens representing GIFT City's Financial/Eco Ecosystem */
+  --brand-emerald-400: #34d399;
+  --brand-emerald-500: #10b981;
+  --brand-blue-400: #60a5fa;
+  
+  /* Safe Interactive Layout Targets */
+  --radius-enterprise: 0.75rem; /* 12px ergonomic curve */
+}
+
+/* =========================================================================
+   2. GLOBAL LAYER INTERCEPTORS & TYPOGRAPHY INTEGRITY
+   ========================================================================= */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevents default mobile browser tap latency blocks */
+    touch-action: manipulation;
+  }
+
+  body {
+    background-color: var(--bg-slate-950);
+    color: #f8fafc;
+    /* Enforces proper safe area padding for modern notch smartphone screens */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
+  /* Clear Focus Rings across interactive nodes to pass corporate accessibility checks */
+  input:focus, select:focus, textarea:focus {
+    outline: 2px solid rgba(52, 211, 153, 0.4);
+    outline-offset: 2px;
+  }
+}
+
+/* =========================================================================
+   3. ATOMIC MOTION DEVIATIONS & HIGH-PERFORMANCE UTILITIES
+   ========================================================================= */
+@layer utilities {
+  /* Soft, responsive fade-in for dynamic conditional rendering dashboard states */
+  .animate-fadeIn {
+    animation: meshFadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: opacity;
+  }
+
+  /* Structural upward spring-in tailored for onboarding registration screens */
+  .animate-slideUp {
+    animation: meshSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: transform, opacity;
+  }
+
+  /* Attracts immediate user focus to critical telemetry traffic updates */
+  .animate-bounce-short {
+    animation: meshBounceShort 2.2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+    will-change: transform;
+  }
+
+  /* Premium Micro-Scrollbar Styling for long ride dashboards */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--bg-slate-950);
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 9999px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--brand-emerald-400);
+  }
+}
+
+/* =========================================================================
+   4. HARDWARE-ACCELERATED TRANSITION KEYFRAMES
+   ========================================================================= */
+@keyframes meshFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes meshSlideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(12px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes meshBounceShort {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
