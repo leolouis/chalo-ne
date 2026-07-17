@@ -1,0 +1,115 @@
+# ============================================================================
+# CHALO NE! METROPOLITAN TRANSIT MESH INDUSTRIAL AUTOMATION SYSTEM
+# ============================================================================
+# Silicon Valley Tier / FAANG Core Production Continuous Integration & Delivery
+# 
+# Implements parallelized compilation tasks, defensive vulnerability dependency audits,
+# advanced multi-environment edge caching, static type analysis, and failure-tolerant 
+# automated asset injection pipelines targeted at production nodes.
+
+name: Enterprise Core Transit Automation Mesh
+
+# Enforces strict event listeners to safeguard the primary production branch
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# Global Environment Performance Adjustments
+env:
+  NODE_VERSION: '20.x'
+  DIST_OUTPUT_DIR: './dist'
+
+# Configures rigid concurrency collision blocks to prevent parallel build interference
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # =========================================================================
+  # PHASE 1: SECURITY AUDIT, TYPE DIAGNOSTICS & ATOMIC PRODUCTION BUNDLING
+  # =========================================================================
+  validate-audit-and-compile:
+    name: Core Code Validation & Asset Compilation Pipeline
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      # Step 1.1: Clone the remote repository down onto the clean runner environment
+      - name: 📂 Checkout Source Code Repository Node
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      # Step 1.2: Establish our designated node runtime engine framework
+      - name: 🟢 Initialize Node.js Production Engine Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: 'https://npmjs.org'
+
+      # Step 1.3: Advanced Edge-Caching Layer configuration to speed up build performance
+      - name: ⚡ Orchestrate High-Performance Cache Matrix for Node Modules
+        uses: actions/cache@v4
+        id: npm-cache
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Step 1.4: Run defensive lockfile evaluations and pull package models safely
+      - name: 📦 Install Enterprise Gated Pipeline Dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      # Step 1.5: Cyber-security scan against known open-source vulnerabilities
+      - name: 🛡️ Execute Automated Dependency Vulnerability Audit
+        run: npm audit --audit-level=high || true
+        continue-on-error: true
+
+      # Step 1.6: Execute deep compile-time analysis to confirm zero implicit-any type violations
+      - name: 🧬 Execute Asynchronous TypeScript Type Diagnostics Check
+        run: npx tsc --noEmit
+
+      # Step 1.7: Compile optimized atomic production asset bundle outputs
+      - name: 🏗️ Compile High-Throughput Production Static Assets
+        run: npm run build
+
+      # Step 1.8: Compress and upload built assets to hidden cloud cache directories
+      - name: 📤 Upload Production Build Artifacts Target
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.DIST_OUTPUT_DIR }}
+
+  # =========================================================================
+  # PHASE 2: AUTOMATED DEPLOYMENT TO WEB NETWORKS (ASYNCHRONOUS CD INFRASTRUCTURE)
+  # =========================================================================
+  deploy-mesh-live:
+    name: Automated Live Web Asset Dispatch Configuration
+    needs: validate-audit-and-compile
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    # Grants granular execution authorization blocks to the cloud container system
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+      
+    steps:
+      # Step 2.1: Dispatch built static assets safely to the live web environment loop
+      - name: 🚀 Dispatch Production Assets to Public Web Pipeline
+        id: deployment
+        uses: actions/deploy-pages@v4
+        
