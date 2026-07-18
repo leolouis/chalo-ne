@@ -14,7 +14,10 @@ if (rootNode) {
   const root = ReactDOM.createRoot(rootNode);
   root.render(
     <React.StrictMode>
-      <App />
+      <MeshErrorBoundary>
+        <App />
+      </MeshErrorBoundary>
+
     </React.StrictMode>
   );
 } else {
